@@ -55,6 +55,11 @@ async function fetchProduit() {
             return;
         }
 
+        // Debug : afficher les données reçues
+        console.log("🔍 Données produit reçues:", data.product);
+        console.log("🌱 Éco-score brut:", data.product.ecoscore_grade);
+        console.log("🌱 Type de l'éco-score:", typeof data.product.ecoscore_grade);
+        
         // Affichage des résultats
         displayProductInfo(data.product, code);
         
@@ -71,8 +76,11 @@ async function fetchProduit() {
 
 // Fonction pour afficher les informations du produit
 function displayProductInfo(product, code) {
-    const ecoscoreGrade = product.ecoscore_grade || "Non disponible";
-    const ecoscoreColor = getEcoscoreColor(ecoscoreGrade);
+    const ecoscoreGrade = product.ecoscore_grade;
+    const hasEcoscore = ecoscoreGrade && ecoscoreGrade !== "Non disponible";
+    const ecoscoreColor = hasEcoscore ? getEcoscoreColor(ecoscoreGrade) : 'ecoscore-unknown';
+    const ecoscoreDisplay = hasEcoscore ? ecoscoreGrade.toUpperCase() : "Non disponible";
+    const ecoscoreDescription = hasEcoscore ? getEcoscoreDescription(ecoscoreGrade) : "Score non disponible";
     
     const labels = product.labels_tags ? 
         product.labels_tags.map(label => label.replace('en:', '')).join(", ") : 
@@ -111,10 +119,10 @@ function displayProductInfo(product, code) {
                     <div class="ecoscore-section">
                         <div class="ecoscore-badge ${ecoscoreColor}">
                             <span class="ecoscore-label">🌱 Éco-Score</span>
-                            <span class="ecoscore-grade">${ecoscoreGrade.toUpperCase()}</span>
+                            <span class="ecoscore-grade">${ecoscoreDisplay}</span>
                         </div>
                         <div class="ecoscore-description">
-                            ${getEcoscoreDescription(ecoscoreGrade)}
+                            ${ecoscoreDescription}
                         </div>
                     </div>
                     
@@ -140,6 +148,9 @@ function displayProductInfo(product, code) {
 
 // Fonction pour obtenir la couleur de l'éco-score
 function getEcoscoreColor(grade) {
+    // Normaliser le grade (enlever espaces, convertir en majuscule)
+    const normalizedGrade = String(grade).trim().toUpperCase();
+    
     const colors = {
         'A': 'ecoscore-a',
         'B': 'ecoscore-b', 
@@ -147,11 +158,15 @@ function getEcoscoreColor(grade) {
         'D': 'ecoscore-d',
         'E': 'ecoscore-e'
     };
-    return colors[grade] || 'ecoscore-unknown';
+    
+    return colors[normalizedGrade] || 'ecoscore-unknown';
 }
 
 // Fonction pour obtenir la description de l'éco-score
 function getEcoscoreDescription(grade) {
+    // Normaliser le grade (enlever espaces, convertir en majuscule)
+    const normalizedGrade = String(grade).trim().toUpperCase();
+    
     const descriptions = {
         'A': 'Excellent impact environnemental 🌟',
         'B': 'Bon impact environnemental ✅',
@@ -159,7 +174,8 @@ function getEcoscoreDescription(grade) {
         'D': 'Impact environnemental élevé ❌',
         'E': 'Impact environnemental très élevé 🚫'
     };
-    return descriptions[grade] || 'Score non disponible';
+    
+    return descriptions[normalizedGrade] || 'Score non disponible';
 }
 
 // Fonction pour sauvegarder le produit dans l'historique
