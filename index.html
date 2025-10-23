@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoShopper 🌱 - Vérifiez l'impact écologique de vos produits</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌿 EcoShopper</h1>
+            <p>Découvrez l'impact écologique de vos produits alimentaires</p>
+        </header>
+
+        <main>
+            <div class="search-section">
+                <div class="input-group">
+                    <input type="text" id="barcode" placeholder="Entrez le code-barres (ex: 3274080005003)" maxlength="20">
+                    <button id="searchBtn" onclick="fetchProduit()">
+                        <span class="btn-text">🔍 Analyser</span>
+                        <span class="btn-loading" style="display: none;">⏳ Recherche...</span>
+                    </button>
+                </div>
+                <div class="help-text">
+                    <small>💡 Vous pouvez scanner un code-barres ou le saisir manuellement</small>
+                </div>
+            </div>
+
+            <div id="resultat" class="result-container" style="display: none;">
+                <!-- Les résultats s'afficheront ici -->
+            </div>
+
+            <div id="error" class="error-container" style="display: none;">
+                <!-- Les erreurs s'afficheront ici -->
+            </div>
+        </main>
+
+        <footer>
+            <p>Données fournies par <a href="https://world.openfoodfacts.org" target="_blank">OpenFoodFacts</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

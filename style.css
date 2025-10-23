@@ -1,0 +1,333 @@
+/* Reset et base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Section de recherche */
+.search-section {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+}
+
+.input-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+#barcode {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+#barcode:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#searchBtn {
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 150px;
+}
+
+#searchBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+#searchBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.help-text {
+    text-align: center;
+    color: #666;
+}
+
+/* Conteneurs de résultats */
+.result-container, .error-container {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+/* Carte produit */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-header {
+    text-align: center;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 20px;
+}
+
+.product-header h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-code {
+    background: #f8f9fa;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-family: monospace;
+    color: #666;
+    display: inline-block;
+}
+
+.product-content {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.product-image img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info-row .label {
+    font-weight: 600;
+    min-width: 120px;
+    color: #555;
+}
+
+.info-row .value {
+    color: #333;
+    flex: 1;
+}
+
+/* Éco-score */
+.ecoscore-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.ecoscore-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.ecoscore-a { background: #4CAF50; color: white; }
+.ecoscore-b { background: #8BC34A; color: white; }
+.ecoscore-c { background: #FFC107; color: #333; }
+.ecoscore-d { background: #FF9800; color: white; }
+.ecoscore-e { background: #F44336; color: white; }
+.ecoscore-unknown { background: #9E9E9E; color: white; }
+
+.ecoscore-description {
+    color: #666;
+    font-style: italic;
+}
+
+/* Labels */
+.labels-section {
+    background: #f0f8ff;
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 4px solid #667eea;
+}
+
+.labels-section h4 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.labels-list {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Ingrédients */
+.ingredients-section {
+    background: #fff8f0;
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 4px solid #ff9800;
+}
+
+.ingredients-section h4 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.ingredients-text {
+    color: #666;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Messages d'erreur */
+.error-message {
+    background: #ffebee;
+    color: #c62828;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #f44336;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    color: white;
+    opacity: 0.8;
+    margin-top: 40px;
+}
+
+footer a {
+    color: white;
+    text-decoration: underline;
+}
+
+footer a:hover {
+    opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .product-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .product-image {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+    
+    .info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .info-row .label {
+        min-width: auto;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.result-container, .error-container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* États de chargement */
+.btn-loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-loading::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
