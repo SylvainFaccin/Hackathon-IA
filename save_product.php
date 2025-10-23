@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Configuration de la base de données
 // Remplace ces valeurs par tes propres paramètres InfinityFree
-$host = 'sqlXXX.infinityfree.com';
+$host = 'sql101.infinityfree.com';
 $dbname = 'if0_40235611_eco_shop';
 $username = 'if0_40235611';         
 $password = 'ZnNi7reJmhz';    // Remplace par ton mot de passe
